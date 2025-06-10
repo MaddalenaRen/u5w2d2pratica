@@ -15,10 +15,10 @@ public class AutoreController {
     @Autowired
     private AutoreService autoreService;
 
-    @PostMapping("/autori") // si mette sempre un uri che definisce la collezione e basta, per convenzione
-    @ResponseStatus(HttpStatus.CREATED) // invece di 200ok possiamo anche cambiare lo stato della response in questo modo o anche in altri
+    @PostMapping("/autori")
+    @ResponseStatus(HttpStatus.CREATED)
     public Autore saveautore(@RequestBody Autore autore){
-        //chiama il service e dice salvami questo studente
+
         return autoreService.saveAutore(autore);
 
     }

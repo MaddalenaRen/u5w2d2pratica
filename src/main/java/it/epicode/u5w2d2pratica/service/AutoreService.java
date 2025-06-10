@@ -14,6 +14,7 @@ public class AutoreService {
 
     public Autore saveAutore(Autore autore){
         autore.setId(new Random().nextInt(1,2000));
+        autore.setAvatar("https://ui-avatars.com/api/?name=" + autore.getNome() + " + " + autore.getCognome());
         autori.add(autore);
         return autore;
 
@@ -34,7 +35,7 @@ public class AutoreService {
         autoreDaCercare.setCognome(autore.getCognome());
         autoreDaCercare.setEmail(autore.getEmail());
         autoreDaCercare.setDataDiNascita(autore.getDataDiNascita());
-        autoreDaCercare.setAvatar(autore.getAvatar());
+        autoreDaCercare.setAvatar("https://ui-avatars.com/api/?name=" + autore.getNome() + " + " + autore.getCognome());
         return autoreDaCercare;
     }
 
