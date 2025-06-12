@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -22,8 +24,7 @@ public class Autore {
     private LocalDate dataDiNascita;
     private String avatar;
 
-    @JsonIgnore//ignora la generazione del json per la lista
+    @JsonIgnore
     @OneToMany(mappedBy = "autore")
-    private List<Blog> blogs;
-
+    private List<BlogPost> blogPost;
 }

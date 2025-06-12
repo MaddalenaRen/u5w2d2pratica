@@ -1,12 +1,12 @@
 package it.epicode.u5w2d2pratica.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
 @Entity
-
-public class Blog {
+public class BlogPost {
     @Id
     @GeneratedValue
     private int id;
