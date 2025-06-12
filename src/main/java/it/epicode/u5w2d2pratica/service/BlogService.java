@@ -1,8 +1,11 @@
 package it.epicode.u5w2d2pratica.service;
 
 
+import it.epicode.u5w2d2pratica.dto.BlogDto;
 import it.epicode.u5w2d2pratica.exception.BlogNotFoundException;
 import it.epicode.u5w2d2pratica.model.Blog;
+import it.epicode.u5w2d2pratica.repository.BlogRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,9 +14,16 @@ import java.util.Random;
 
 @Service
 public class BlogService {
-    private List<Blog> blogs = new ArrayList<>();
+    @Autowired
+    private BlogRepository blogRepository;
 
-    public Blog saveBlog(Blog blog){
+    @Autowired
+    private BlogService blogService;
+
+    @Autowired
+    private AutoreService autoreservice;
+
+    public Blog saveBlog(BlogDto blogDto){
         blog.setId(new Random().nextInt(1,2000));
         blog.setCover("https://picsum.photos/200/300");
         blogs.add(blog);
@@ -30,18 +40,18 @@ public class BlogService {
         return blogs;
     }
 
-    public Blog updateBlog(int id, Blog blog)throws BlogNotFoundException{
+    public Blog updateBlog(int id, BlogDto blogDto)throws BlogNotFoundException{
         Blog blogDaCercare = getBlog(id);
-        blogDaCercare.setCategoria(blog.getCategoria());
-        blogDaCercare.setTitolo(blog.getTitolo());
-        blogDaCercare.setContenuto(blog.getContenuto());
-        blogDaCercare.setCover(blog.getContenuto());
-        blogDaCercare.setTempoDiLettura(blog.getTempoDiLettura());
+        blogDaCercare.setCategoria(blogDto.getCategoria());
+        blogDaCercare.setTitolo(blogDto.getTitolo());
+        blogDaCercare.setContenuto(blogDto.getContenuto());
+        blogDaCercare.setCover(blogDto.getContenuto());
+        blogDaCercare.setTempoDiLettura(blogDto.getTempoDiLettura());
         return blogDaCercare;
     }
 
     public void deleteBlog(int id)throws BlogNotFoundException{
         Blog blogDaRimuovere = getBlog(id);
-        blogs.remove(blogDaRimuovere);
+        blogRepository.delete(blogDaRimuovere);
     }
 }

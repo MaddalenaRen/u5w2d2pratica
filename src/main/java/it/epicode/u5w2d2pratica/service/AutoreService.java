@@ -21,18 +21,18 @@ public class AutoreService {
     @Autowired
     private AutoreRepository autoreRepository;
 
-    @Autowired
-    private BlogService blogService;
+//    @Autowired
+//    private BlogService blogService;
 
     public Autore saveAutore(AutoreDto autoreDto)throws AutoreNotFoundException{
-        Blog blog = blogService.getBlog(autoreDto.getBlogId());
+//        Blog blog = blogService.getBlog(autoreDto.getBlogId());
         Autore autore = new Autore();
         autore.setAvatar("https://ui-avatars.com/api/?name=" + autore.getNome() + " + " + autore.getCognome());
         autore.setNome(autoreDto.getNome());
         autore.setCognome(autoreDto.getCognome());
         autore.setEmail(autoreDto.getEmail());
         autore.setDataDiNascita(autoreDto.getDataDiNascita());
-        return autoreRepository.save(autore)
+        return autoreRepository.save(autore);
 
     }
 
@@ -53,11 +53,11 @@ public class AutoreService {
         autoreDaAggiornare.setCognome(autoreDto.getCognome());
         autoreDaAggiornare.setEmail(autoreDto.getEmail());
         autoreDaAggiornare.setDataDiNascita(autoreDto.getDataDiNascita());
-        autoreDaAggiornare.setAvatar("https://ui-avatars.com/api/?name=" + autoreDto.getNome() + " + " + autoreDto.getCognome());
-        if(autoreDaAggiornare.getId()!=autoreDto.getBlogId()){
-           Blog blog = blogService.getBlog(autoreDto.getBlogId());
-            autoreDaAggiornare.setBlogs(blog);
-        }
+        autoreDaAggiornare.setAvatar("https://ui-avatars.com/api/?name=" + autoreDto.getNome() + "  " + autoreDto.getCognome());
+//        if(autoreDaAggiornare.getId()!=autoreDto.getBlogId()){
+//           Blog blog = blogService.getBlog(autoreDto.getBlogId());
+//            autoreDaAggiornare.setBlogs(blog);
+//        }
 
         return autoreRepository.save(autoreDaAggiornare);
     }
@@ -67,7 +67,7 @@ public class AutoreService {
 
     public void deleteAutore(int id)throws AutoreNotFoundException{
         Autore autoreDaRimuovere = getAutore(id);
-        autore.remove(autoreDaRimuovere);
+        autoreRepository.dele
 
     }
 

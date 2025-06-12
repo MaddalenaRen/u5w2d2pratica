@@ -10,6 +10,5 @@ public class AutoreDto {
     private String cognome;
     private String email;
     private LocalDate dataDiNascita;
-    //private String avatar;
-    private int blogId;
+    //private int blogId;
 }

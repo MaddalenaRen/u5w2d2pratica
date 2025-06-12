@@ -23,7 +23,6 @@ public class Autore {
     private String avatar;
 
     @JsonIgnore//ignora la generazione del json per la lista
-
     @OneToMany(mappedBy = "autore")
     private List<Blog> blogs;
 
