@@ -40,7 +40,7 @@ public class AutoreController {
         return autoreService.saveAutore(autoreDto);
     }
 
-    @GetMapping("/autori")
+    @GetMapping("")
     public Page<Autore> getAutori(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "10") int size,
                                   @RequestParam(defaultValue = "id") String sortBy){
